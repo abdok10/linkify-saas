@@ -10,13 +10,14 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { cn, NAV_LINKS } from "@/utils";
+import { cn } from "@/utils/functions/cn";
+import { NAV_LINKS } from "@/utils/constants/nav-links";
 import { LucideIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import MaxWidthWrapper from "@/components/global/MaxWidthWrapper";
+import AnimationContainer  from "@/components/global/AnimationContainer";
 // import MobileNavbar from "./mobile-navbar";
-import AnimationContainer from "@/components/global/AnimationContainer";
 
 const Navbar = () => {
   const user = {};

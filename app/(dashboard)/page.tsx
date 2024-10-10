@@ -1,6 +1,7 @@
-import AnimationContainer from "@/components/global/AnimationContainer";
-import MaxWidthWrapper from "@/components/global/MaxWidthWrapper";
+// import { AnimationContainer, MaxWidthWrapper} from "@/components";
 // import { BorderBeam } from "@/components/ui/BorderBeam";
+import MaxWidthWrapper from "@/components/global/MaxWidthWrapper";
+import AnimationContainer from "@/components/global/AnimationContainer";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";

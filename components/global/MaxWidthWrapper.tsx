@@ -1,4 +1,4 @@
-import { cn } from "@/utils/functions/cn";
+import { cn } from "@/utils";
 import React from "react";
 
 interface Props {
