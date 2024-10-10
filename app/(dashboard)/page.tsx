@@ -1,6 +1,6 @@
-import AnimationContainer from "@/components/AnimationContainer";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { BorderBeam } from "@/components/ui/BorderBeam";
+import AnimationContainer from "@/components/global/AnimationContainer";
+import MaxWidthWrapper from "@/components/global/MaxWidthWrapper";
+// import { BorderBeam } from "@/components/ui/BorderBeam";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
@@ -78,7 +78,7 @@ export default function Home() {
             </div>
           </AnimationContainer>
 
-          <AnimationContainer
+          {/* <AnimationContainer
             delay={0.2}
             className="relative pt-20 pb-20 md:py-32 px-2 bg-transparent w-full"
           >
@@ -91,12 +91,12 @@ export default function Home() {
                 width={1200}
                 height={1200}
                 quality={100}
-                className="rounded-md lg:rounded-xl bg-foreground/10 ring-1 ring-border"
+                className="rounded-md lg:rounded-xl bg-foreground ring-1 ring-border"
               />
               <div className="absolute -bottom-4 inset-x-0 w-full h-1/2 bg-gradient-to-t from-background z-40"></div>
               <div className="absolute bottom-0 md:-bottom-8 inset-x-0 w-full h-1/4 bg-gradient-to-t from-background z-50"></div>
             </div>
-          </AnimationContainer>
+          </AnimationContainer> */}
         </div>
       </MaxWidthWrapper>
 

@@ -10,15 +10,15 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { cn, NAV_LINKS } from "@/lib/utils";
+import { cn, NAV_LINKS } from "@/utils";
 import { LucideIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import MaxWidthWrapper from "@/components/global/MaxWidthWrapper";
 // import MobileNavbar from "./mobile-navbar";
-import AnimationContainer from "@/components/AnimationContainer";
+import AnimationContainer from "@/components/global/AnimationContainer";
 
-const Navigation = () => {
+const Navbar = () => {
   const user = {};
 
   const [scroll, setScroll] = useState(false);
@@ -190,4 +190,4 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-export default Navigation;
+export default Navbar;

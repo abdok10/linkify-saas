@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/functions/cn";
 
 interface BorderBeamProps {
   className?: string;
