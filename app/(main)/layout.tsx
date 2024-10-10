@@ -19,10 +19,14 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           className="w-full my-10 border border-zinc-700 rounded-md"
         />
         <div className="space-y-4">
-          <p className="w-full rounded-md bg-zinc-900 hover:bg-zinc-200 hover:text-zinc-900 font-semibold text-center py-2">Dashboard</p>
-          <p className="w-full rounded-md bg-zinc-900 hover:bg-zinc-200 hover:text-zinc-900 font-semibold text-center py-2">Shorten Link</p>
-          <p className="w-full rounded-md bg-zinc-900 hover:bg-zinc-200 hover:text-zinc-900 font-semibold text-center py-2">QR Code</p>
-          <p className="w-full rounded-md bg-zinc-900 hover:bg-zinc-200 hover:text-zinc-900 font-semibold text-center py-2">Linktree</p>
+          {["Dashboard", "Shorten URL", "QR Code", "Linktree"].map((link, id) => (
+            <p
+              key={id}
+              className="w-full rounded-md bg-zinc-900 hover:bg-zinc-200 hover:text-zinc-900 font-semibold text-center py-2"
+            >
+              {link}
+            </p>
+          ))}
         </div>
       </aside>
       <div className="">
