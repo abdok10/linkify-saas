@@ -7,7 +7,7 @@ const Plan = () => {
         <div>
           <p className="font-bold">Enterprise</p>
           <p className="text-zinc-400">Pay as you go</p>
-        </div>
+        </div> 
 
         <Link
           href="https://github.com/abdok10"

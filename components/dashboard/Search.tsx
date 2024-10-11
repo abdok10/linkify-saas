@@ -19,7 +19,7 @@ const Search = () => {
         placeholder="Search..."
         className="w-full bg-transparent focus:outline-none"
       />
-      <span className="rounded-md bg-white dark:bg-zinc-600 px-1">⌘K</span>
+      <span className="rounded-md bg-white dark:bg-zinc-600 px-2">⌘K</span>
       <CommandMenu open={open} setOpen={setOpen} />
     </div>
   );

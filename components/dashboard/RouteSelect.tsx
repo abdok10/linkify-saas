@@ -9,10 +9,10 @@ import { FiDollarSign, FiLink, FiPaperclip, FiUsers } from "react-icons/fi";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: RiHome3Fill },
-  { name: "Team", href: "/team", icon: FiUsers },
-  { name: "Integrations", href: "/integrations", icon: FiPaperclip },
+  { name: "Notes", href: "/notes", icon: FiPaperclip },
+  { name: "Shorten URL", href: "/urls", icon: FiUsers },
+  { name: "To-Do App", href: "/todos", icon: FiDollarSign },
   { name: "Invoices", href: "/invoices", icon: FiLink },
-  { name: "Finance", href: "/finance", icon: FiDollarSign },
 ];
 
 const RouteSelect = () => {
