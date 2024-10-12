@@ -12,7 +12,7 @@ const navigation = [
   { name: "Notes", href: "/notes", icon: FiPaperclip },
   { name: "Shorten URL", href: "/urls", icon: FiUsers },
   { name: "To-Do App", href: "/todos", icon: FiDollarSign },
-  { name: "Invoices", href: "/invoices", icon: FiLink },
+  { name: "Settings", href: "/settings", icon: FiLink },
 ];
 
 const RouteSelect = () => {
