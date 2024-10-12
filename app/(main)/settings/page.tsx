@@ -6,12 +6,14 @@ import { Label } from "@/components/ui/label";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { settingSchema } from "@/lib/zodSchemas";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { SettingActions } from "@/actions/user";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Loader2 } from "lucide-react";
 
 export default function Home() {
+  const { pending } = useFormStatus();
   const [lastResult, action] = useFormState(SettingActions, undefined);
   const [form, fields] = useForm({
     lastResult,
@@ -27,7 +29,7 @@ export default function Home() {
     <div className="px-5 flex flex-col gap-5">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Settings</h1>
-        <p className="text-zinc-400">update you profile informations</p>
+        <p className="text-zinc-400">Update your profile informations</p>
       </div>
       <Card className="flex-grow w-full px-8 py-8 ">
         <form
@@ -66,10 +68,11 @@ export default function Home() {
           </div> */}
 
           <Button
+            disabled={pending}
             type="submit"
             className="w-full sm:w-28 dark:bg-zinc-700 dark:hover:bg-zinc-800 text-zinc-50 mt-4"
           >
-            Save now
+            {pending ? <Loader2 className="animate-spin" /> : "Save now"}
           </Button>
         </form>
       </Card>

@@ -10,7 +10,6 @@ export const SettingActions = async (
 ) => {
   //NOTE - should  get from auth user
   const user = await getUser();
-  console.log("user=========", user);
   const submission = parseWithZod(formData, {
     schema: settingSchema,
   });
@@ -21,9 +20,9 @@ export const SettingActions = async (
 
   const { name } = submission.value;
 
-  if (name && user) {
+  if (name && user?.name !== name) {
     await db.user.update({
-      where: { email: user.email },
+      where: { email: user?.email },
       data: {
         name,
       },
