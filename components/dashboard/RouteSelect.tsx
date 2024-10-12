@@ -30,7 +30,7 @@ const RouteSelect = () => {
           key={nav.name}
           className={`${
             pathname == nav.href
-              ? "bg-white text-zinc-950 shadow dark:bg-zinc-200"
+              ? "bg-white text-zinc-950 shadow dark:bg-zinc-50"
               : "hover:bg-zinc-200 hover:font-normal hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
           } transition-all flex items-center gap-2  w-full rounded-md px-2 py-1`}
         >
