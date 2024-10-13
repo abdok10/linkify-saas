@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { File } from "lucide-react";
 import Link from "next/link";
+import { format } from "date-fns";
 
 const NotesPage = async () => {
   const notes = await getNotes();
@@ -31,20 +32,23 @@ const NotesPage = async () => {
           {notes.map((note) => (
             <Card
               key={note.id}
-              className="col-span-3 h-[300px] flex flex-col justify-between"
+              className="col-span-12 md lg:col-span-6 xl:col-span-4 2xl:col-span-3 h-[300px] flex flex-col justify-between"
             >
-              <div>
+              <div className="overflow-y-scroll">
                 <CardHeader>
                   <CardTitle>{note.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="overflow-y-scroll">
+                <CardContent>
                   <CardDescription>
-                    {note.content.slice(0, 250)}
-                    {note.content.length > 250 ? "..." : ""}
+                    {note.content.slice(0, 200)}
+                    {note.content.length > 200 ? "..." : ""}
                   </CardDescription>
                 </CardContent>
               </div>
-              <CardFooter className="flex justify-end">
+              <CardFooter className="flex justify-between items-center">
+                <CardDescription>
+                  {format(note.createdAt, "EEE,dd MMM yyyy - hh:mm aa")}
+                </CardDescription>
                 <Link href={`/notes/${note.id}`}>
                   <Button variant="secondary">Read more</Button>
                 </Link>
