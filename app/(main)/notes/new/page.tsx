@@ -60,7 +60,7 @@ export default function CreateNotePage() {
             <p className="text-red-500 text-sm">{fields.content.errors}</p>
           </div>
 
-          <SubmitBtn />
+          <SubmitBtn text="create" loadingText="creating" />
         </form>
       </Card>
     </div>

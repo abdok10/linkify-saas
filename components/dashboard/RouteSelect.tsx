@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 
 import { RiHome3Fill } from "react-icons/ri";
 import { FiDollarSign, FiLink, FiPaperclip, FiUsers } from "react-icons/fi";

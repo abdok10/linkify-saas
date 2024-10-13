@@ -1,4 +1,4 @@
-import { getNotes } from "@/actions/notes";
+import { getAllNotes } from "@/actions/notes";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,7 +13,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 
 const NotesPage = async () => {
-  const notes = await getNotes();
+  const notes = await getAllNotes();
 
   return (
     <section className="px-5 space-y-10">
@@ -47,7 +47,7 @@ const NotesPage = async () => {
               </div>
               <CardFooter className="flex justify-between items-center">
                 <CardDescription>
-                  {format(note.createdAt, "EEE,dd MMM yyyy - hh:mm aa")}
+                  {format(note.createdAt, "EEE,dd MMM yyyy")}
                 </CardDescription>
                 <Link href={`/notes/${note.id}`}>
                   <Button variant="secondary">Read more</Button>

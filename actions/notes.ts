@@ -31,11 +31,24 @@ export const CreateNoteAction = async (
     },
   });
 
-  return redirect("/notes")
-
+  return redirect("/notes");
 };
 
-export const getNotes = async () => {
+export const deleteNote = async (noteId: string) => {
+  await db.note.delete({
+    where: { id: noteId },
+  });
+  return redirect("/notes");
+};
+
+export const getNote = async (noteId: string) => {
+  const note = await db.note.findUnique({
+    where: { id: noteId },
+  });
+  return note;
+};
+
+export const getAllNotes = async () => {
   const notes = await db.note.findMany({
     orderBy: { createdAt: "desc" },
   });
