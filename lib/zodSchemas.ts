@@ -10,4 +10,5 @@ export const settingSchema = z.object({
 export const noteSchema = z.object({
   title: z.string().min(6).max(100),
   content: z.string().min(8).max(1000),
-})
+  userId: z.string().optional(),
+});

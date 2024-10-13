@@ -34,6 +34,36 @@ export const CreateNoteAction = async (
   return redirect("/notes");
 };
 
+export const updateNoteAction = async (
+  prevState: unknown,
+  formData: FormData
+) => {
+  // const user;
+  // if (!user) throw new Error("Not Authorized");
+
+  const submission = parseWithZod(formData, {
+    schema: noteSchema,
+  });
+
+  if (submission.status !== "success") {
+    return submission.reply();
+  }
+
+  const { title, content } = submission.value;
+
+  // await db.note.update({
+  //   where: { id: noteId},
+  //   data: {
+  //     // from auth user
+  //     // userId: user?.id,
+  //     title,
+  //     content,
+  //   },
+  // });
+
+  return redirect("/notes");
+};
+
 export const deleteNote = async (noteId: string) => {
   await db.note.delete({
     where: { id: noteId },

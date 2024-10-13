@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/card";
 import { format } from "date-fns";
 import { EditIcon, TrashIcon } from "lucide-react";
+import Link from "next/link";
 
 interface NoteDetailsProps {
   params: { noteId: string };
@@ -36,7 +37,7 @@ const NoteDetailsPage = async ({ params }: NoteDetailsProps) => {
         <h1 className="text-3xl font-bold">Note Details</h1>
         <p className="text-zinc-400">View, update or delete your note</p>
       </div>
-      <Card className="">
+      <Card>
         <CardHeader>
           <CardTitle className="text-2xl">{note?.title}</CardTitle>
         </CardHeader>
@@ -51,7 +52,9 @@ const NoteDetailsPage = async ({ params }: NoteDetailsProps) => {
           </CardDescription>
           <div className="space-x-2">
             <Button variant="secondary">
-              <EditIcon />
+              <Link href={`/notes/edit/${note!.id}`}>
+                <EditIcon />
+              </Link>
             </Button>
 
             <AlertDialog>
@@ -78,9 +81,6 @@ const NoteDetailsPage = async ({ params }: NoteDetailsProps) => {
                     }}
                   >
                     <SubmitBtn text="continue" loadingText="deleting" />
-                    {/* <AlertDialogAction type="submit">
-                      Continue
-                    </AlertDialogAction> */}
                   </form>
                 </AlertDialogFooter>
               </AlertDialogContent>
