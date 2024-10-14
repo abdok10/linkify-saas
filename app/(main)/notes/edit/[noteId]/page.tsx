@@ -12,14 +12,7 @@ import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import SubmitBtn from "@/components/global/SubmitBtn";
 import { useState, useEffect } from "react";
-
-interface NoteTypes {
-  id: string;
-  title: string;
-  content: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { NoteTypes } from "@/types/note";
 
 interface EditNotePageProps {
   params: { noteId: string };
