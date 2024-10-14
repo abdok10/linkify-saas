@@ -17,22 +17,28 @@ interface NoteTypes {
   id: string;
   title: string;
   content: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-  userId?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-interface EditNoteProps {
+interface EditNotePageProps {
   params: { noteId: string };
 }
 
-const EditNotePage = ({ params }: EditNoteProps) => {
-  const [note, setNote] = useState(function(){
-    getNote(params.noteId)
-  });
+const EditNotePage: React.FC<EditNotePageProps> = ({ params }) => {
+  const [note, setNote] = useState<NoteTypes | null>(null);
   useEffect(() => {
-    setNote(getNote(params.noteId));
-  }, [setNote, params.noteId]);
+    const fetchNote = async () => {
+      try {
+        const note = await getNote(params.noteId);
+        setNote(note);
+      } catch (e) {
+        console.error("error: ", e);
+        setNote(null);
+      }
+    };
+    fetchNote();
+  }, [params.noteId]);
 
   const [lastResult, action] = useFormState(updateNoteAction, undefined);
   const [form, fields] = useForm({
@@ -61,18 +67,14 @@ const EditNotePage = ({ params }: EditNoteProps) => {
           noValidate
         >
           <div className="space-y-1">
-            <Label htmlFor="title">Title</Label>
+            {/* hidden input */}
+            <input type="hidden" name="noteId" value={note?.id} />
+
             <Input
               id="title"
               key={fields.title.key}
               name={fields.title.name}
-              defaultValue={note!.id || undefined}
-            />
-            <Input
-              id="title"
-              key={fields.title.key}
-              name={fields.title.name}
-              defaultValue={fields.title.initialValue}
+              defaultValue={note?.title || fields.title.initialValue}
             />
             <p className="text-red-500 text-sm">{fields.title.errors}</p>
           </div>
@@ -83,12 +85,12 @@ const EditNotePage = ({ params }: EditNoteProps) => {
               rows={6}
               key={fields.content.key}
               name={fields.content.name}
-              defaultValue={fields.content.initialValue}
+              defaultValue={note?.content || fields.content.initialValue}
             ></Textarea>
             <p className="text-red-500 text-sm">{fields.content.errors}</p>
           </div>
 
-          <SubmitBtn text="create" loadingText="creating" />
+          <SubmitBtn text="update" loadingText="updating" />
         </form>
       </Card>
     </div>

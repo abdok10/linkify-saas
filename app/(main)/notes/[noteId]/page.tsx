@@ -2,7 +2,6 @@ import { deleteNote, getNote } from "@/actions/notes";
 import SubmitBtn from "@/components/global/SubmitBtn";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,

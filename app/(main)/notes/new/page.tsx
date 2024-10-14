@@ -7,13 +7,13 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { noteSchema } from "@/lib/zodSchemas";
 import { useFormState } from "react-dom";
-import { CreateNoteAction } from "@/actions/notes";
+import { createNoteAction } from "@/actions/notes";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import SubmitBtn from "@/components/global/SubmitBtn";
 
 export default function CreateNotePage() {
-  const [lastResult, action] = useFormState(CreateNoteAction, undefined);
+  const [lastResult, action] = useFormState(createNoteAction, undefined);
   const [form, fields] = useForm({
     lastResult,
 
