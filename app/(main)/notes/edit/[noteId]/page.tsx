@@ -50,7 +50,7 @@ const EditNotePage: React.FC<EditNotePageProps> = ({ params }) => {
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Notes</h1>
         <p className="text-zinc-400">Update your note</p>
-      </div>
+      </div>~
       <Card className="flex-grow w-full px-8 py-8 ">
         <form
           id={form.id}

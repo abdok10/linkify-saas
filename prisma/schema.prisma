@@ -20,15 +20,29 @@ model User {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   Notes             Note[] 
+  Todos             Todo[]
 }
 
 model Note {
-  id        String   @id @default(cuid())
-  title     String
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+id            String   @id @default(cuid())
+title         String
+content       String
+createdAt     DateTime @default(now())
+updatedAt     DateTime @updatedAt
+  
+user          User?   @relation(fields: [userId], references: [id])
+userId        String?
+}
 
-  user      User?  @relation(fields: [userId], references: [id])
-  userId    String?
+model Todo {
+  id          Int       @id @default(autoincrement())
+  todo        String  
+  isCompleted Boolean?   @default(false)
+  time        Int?       @default(25)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  user        User?     @relation(fields: [userId], references: [id])
+  userId      String?
 }

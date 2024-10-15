@@ -29,6 +29,7 @@ interface NoteDetailsProps {
 
 const NoteDetailsPage = async ({ params }: NoteDetailsProps) => {
   const note = await getNote(params.noteId);
+
   console.log(note);
   return (
     <div className="px-5 flex flex-col gap-5">
