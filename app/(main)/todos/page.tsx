@@ -1,19 +1,15 @@
 import { createTodo, getTodos } from '@/actions/todos'
 import TodosListing from '@/components/TodosListing'
+import ToggleTodos from '@/components/ToggleTodos'
 import { Card, CardDescription } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import {
-  ArrowDownUp,
-  ChevronDown,
-  ChevronUp,
-  Dot,
-  Plus,
-  Timer
-} from 'lucide-react'
+import { TodoTypes } from '@/types'
+import { ArrowDownUp, Dot, Plus } from 'lucide-react'
 
 const TodosPage = async () => {
-  const todos = await getTodos()
-  const showCompleted = false
+  const todos: TodoTypes[] = await getTodos()
+  const completedTodos = todos.filter(todo => todo.isCompleted)
+  const unCompletedTodos = todos.filter(todo => !todo.isCompleted)
 
   return (
     <div className='space-y-4 px-5'>
@@ -22,6 +18,7 @@ const TodosPage = async () => {
         <ArrowDownUp />
       </div>
 
+      {/* Stats Card */}
       <Card className='flex items-center justify-between px-20 py-5'>
         <div className='flex flex-col items-center'>
           <h2>
@@ -45,6 +42,7 @@ const TodosPage = async () => {
         </div>
       </Card>
 
+      {/* Form */}
       <Card className='border-lime-700'>
         <form
           action={createTodo}
@@ -67,35 +65,19 @@ const TodosPage = async () => {
         </form>
       </Card>
 
-      <div className=''>
+      {/* Uncompleted Todos */}
+      <div>
         <h2 className='text-xl'>
           Tasks <Dot className='inline size-10 text-lime-500' /> 3h
         </h2>
-        <Card className='flex items-center justify-between px-5 py-2'>
-          <div className='flex items-center gap-2'>
-            <Input type='radio' className='size-4' />
-            <Timer className='size-5' />
-            <div>
-              <p>coding (auth.js + Linkify - todos part )</p>
-              <div className='flex gap-1'>
-                <Timer className='size-4 text-lime-300' />
-                <Timer className='size-4 text-lime-300' />
-                <Timer className='size-4 text-lime-300' />
-              </div>
-            </div>
-          </div>
-          <p className='text-zinc-300'>Today</p>
-        </Card>
+        <div>
+          <TodosListing todos={unCompletedTodos} />
+          <TodosListing todos={unCompletedTodos} />
+        </div>
       </div>
 
-      <div className='mx-auto mt-20 flex w-fit cursor-pointer items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-950 px-5 py-1'>
-        <p className='text-sm'>
-          {showCompleted ? 'Show' : 'Hide'} Completed Tasks
-        </p>
-        {!showCompleted ? <ChevronDown /> : <ChevronUp />}
-      </div>
-
-      <TodosListing todos={todos}/>
+      {/* Toggle Completed Todos and liste them */}
+      <ToggleTodos todos={completedTodos} />
     </div>
   )
 }
