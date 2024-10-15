@@ -13,5 +13,5 @@ export interface TodoTypes {
   time: number
   createdAt: Date
   updatedAt: Date
-  userId?: string
+  // userId?: string
 }
