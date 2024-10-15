@@ -1,11 +1,16 @@
 'use client'
 
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, Dot } from 'lucide-react'
 import { useState } from 'react'
 import TodosListing from './TodosListing'
 import type { TodoTypes } from '@/types'
 
-const ToggleTodos = ({ todos }: { todos: TodoTypes[] }) => {
+interface ToggleTodosProps {
+  todos: TodoTypes[]
+  elapsedTime: number
+}
+
+const ToggleTodos = ({ todos, elapsedTime }: ToggleTodosProps) => {
   const [showTodos, setShowTodos] = useState<boolean>(false)
   return (
     <>
@@ -24,7 +29,10 @@ const ToggleTodos = ({ todos }: { todos: TodoTypes[] }) => {
       <div className='pb-10'>
         {showTodos && (
           <>
-            <h2 className='text-xl'>Completed Tasks</h2>
+            <h2 className='text-xl'>
+              Completed Tasks <Dot className='inline size-10 text-lime-500' />{' '}
+              {elapsedTime}h
+            </h2>
             <TodosListing todos={todos} />
           </>
         )}

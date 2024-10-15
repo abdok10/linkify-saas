@@ -8,8 +8,18 @@ import { ArrowDownUp, Dot, Plus } from 'lucide-react'
 
 const TodosPage = async () => {
   const todos: TodoTypes[] = await getTodos()
+
   const completedTodos = todos.filter(todo => todo.isCompleted)
   const unCompletedTodos = todos.filter(todo => !todo.isCompleted)
+
+  const estimatedTime = unCompletedTodos
+    .map(todo => todo.time)
+    .reduce((curr, acc) => curr + acc, 0)
+  const elapsedTime = completedTodos
+    .map(todo => todo.time)
+    .reduce((curr, acc) => curr + acc, 0)
+  const unCompletedTodosLength = unCompletedTodos.length
+  const completedTodosLength = completedTodos.length
 
   return (
     <div className='space-y-4 px-5'>
@@ -22,22 +32,32 @@ const TodosPage = async () => {
       <Card className='flex items-center justify-between px-20 py-5'>
         <div className='flex flex-col items-center'>
           <h2>
-            <span className='text-3xl font-semibold text-lime-500'>3</span>h
+            <span className='text-3xl font-semibold text-lime-500'>
+              {estimatedTime}
+            </span>
+            h
           </h2>
           <CardDescription>Estimated Time</CardDescription>
         </div>
         <div className='flex flex-col items-center'>
-          <h2 className='text-3xl font-semibold text-lime-500'>4</h2>
+          <h2 className='text-3xl font-semibold text-lime-500'>
+            {unCompletedTodosLength}
+          </h2>
           <CardDescription>Tasks to be Completed</CardDescription>
         </div>
         <div className='flex flex-col items-center'>
           <h2>
-            <span className='text-3xl font-semibold text-lime-500'>5</span>h
+            <span className='text-3xl font-semibold text-lime-500'>
+              {elapsedTime}
+            </span>
+            h
           </h2>
           <CardDescription>Elapsed Time</CardDescription>
         </div>
         <div className='flex flex-col items-center'>
-          <h2 className='text-3xl font-semibold text-lime-500'>2</h2>
+          <h2 className='text-3xl font-semibold text-lime-500'>
+            {completedTodosLength}
+          </h2>
           <CardDescription>Completed Tasks</CardDescription>
         </div>
       </Card>
@@ -68,16 +88,16 @@ const TodosPage = async () => {
       {/* Uncompleted Todos */}
       <div>
         <h2 className='text-xl'>
-          Tasks <Dot className='inline size-10 text-lime-500' /> 3h
+          Tasks <Dot className='inline size-10 text-lime-500' /> {estimatedTime}
+          h
         </h2>
         <div>
-          <TodosListing todos={unCompletedTodos} />
           <TodosListing todos={unCompletedTodos} />
         </div>
       </div>
 
       {/* Toggle Completed Todos and liste them */}
-      <ToggleTodos todos={completedTodos} />
+      <ToggleTodos todos={completedTodos} elapsedTime={elapsedTime} />
     </div>
   )
 }

@@ -4,15 +4,15 @@ import db from '@/lib/prisma/db'
 import { revalidatePath } from 'next/cache'
 
 export const getTodos = async () => {
+  const todos = await db.todo.findMany({
+    orderBy: {
+      createdAt: 'desc'
+    }
+  })
+  return todos
   try {
-    const todos = await db.todo.findMany({
-      orderBy: {
-        createdAt: 'desc'
-      }
-    })
-    return todos
   } catch (error) {
-    return error
+    console.error('Error fetching todos')
   }
 }
 
