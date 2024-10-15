@@ -37,8 +37,8 @@ userId        String?
 model Todo {
   id          Int       @id @default(autoincrement())
   todo        String  
-  isCompleted Boolean?   @default(false)
-  time        Int?       @default(25)
+  isCompleted Boolean   @default(false)
+  time        Int        @default(1)
 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt

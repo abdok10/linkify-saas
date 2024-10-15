@@ -36,9 +36,9 @@ const TodosListing = ({ todos }: TodosListingProps) => {
                 </p>
                 {!isCompleted && (
                   <div className='flex gap-1'>
-                    <Timer className='size-4 text-lime-300' />
-                    <Timer className='size-4 text-lime-300' />
-                    <Timer className='size-4 text-lime-300' />
+                    {Array.from({ length: todo.time }, (_, index) => (
+                      <Timer key={index} className='size-4 text-lime-300' />
+                    ))}
                   </div>
                 )}
               </div>
