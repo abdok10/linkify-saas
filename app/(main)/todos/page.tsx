@@ -25,7 +25,9 @@ const TodosPage = async () => {
     <div className='space-y-4 px-5'>
       <div className='flex justify-between'>
         <h1 className='text-2xl'>Today</h1>
-        <ArrowDownUp />
+        <div className='mr-2 cursor-pointer rounded bg-zinc-600 p-1'>
+          <ArrowDownUp className='size-6' />
+        </div>
       </div>
 
       {/* Stats Card */}
@@ -91,9 +93,7 @@ const TodosPage = async () => {
           Tasks <Dot className='inline size-10 text-lime-500' /> {estimatedTime}
           h
         </h2>
-        <div>
-          <TodosListing todos={unCompletedTodos} />
-        </div>
+        <TodosListing todos={unCompletedTodos} />
       </div>
 
       {/* Toggle Completed Todos and liste them */}

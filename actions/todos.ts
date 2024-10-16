@@ -10,10 +10,6 @@ export const getTodos = async () => {
     }
   })
   return todos
-  try {
-  } catch (error) {
-    console.error('Error fetching todos')
-  }
 }
 
 export const createTodo = async (formData: FormData) => {

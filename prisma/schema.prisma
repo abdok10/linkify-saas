@@ -9,40 +9,44 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
-  id                String    @id @default(cuid())
-  name              String?
-  email             String    @unique
-  stripeCustomerId  String?   @unique
-  colorSchemes      String?   @default("theme-zinc")
+//TODO - models need to be pushed 
 
-  password          String
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+model User {    
+  id                String        @id @default(cuid())
+  name              String?   
+  email             String        @unique
+  stripeCustomerId  String?       @unique
+  colorSchemes      String?       @default("theme-zinc")
+
+  password          String    
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
   Notes             Note[] 
   Todos             Todo[]
 }
 
-model Note {
-id            String   @id @default(cuid())
-title         String
-content       String
-createdAt     DateTime @default(now())
-updatedAt     DateTime @updatedAt
-  
-user          User?   @relation(fields: [userId], references: [id])
-userId        String?
+model Todo {
+  id                String       @id @default(cuid())
+  todo              String  
+  isCompleted       Boolean      @default(false)
+  timePlanned       Int          @default(1)
+  plannedDate       DateTime     @default(now())
+
+  user              User?        @relation(fields: [userId], references: [id])
+  userId            String?
+
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
 }
 
-model Todo {
-  id          Int       @id @default(autoincrement())
-  todo        String  
-  isCompleted Boolean   @default(false)
-  time        Int        @default(1)
 
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-
-  user        User?     @relation(fields: [userId], references: [id])
-  userId      String?
+model Note {
+id                  String       @id @default(cuid())
+title               String   
+content             String   
+createdAt           DateTime     @default(now())
+updatedAt           DateTime     @updatedAt
+  
+user                User?        @relation(fields: [userId], references: [id])
+userId              String?
 }
