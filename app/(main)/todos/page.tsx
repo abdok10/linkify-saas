@@ -81,7 +81,7 @@ const TodosPage = async () => {
             />
           </div>
           <div className='max-w-20'>
-            <Input type='number' name='time' />
+            <Input type='number' name='time' required/>
           </div>
           <button type='submit' className='hidden' />
         </form>

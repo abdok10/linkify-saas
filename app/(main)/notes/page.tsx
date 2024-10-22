@@ -34,7 +34,7 @@ const NotesPage = async () => {
               key={note.id}
               className="col-span-12 md lg:col-span-6 xl:col-span-4 2xl:col-span-3 h-[300px] flex flex-col justify-between"
             >
-              <div className="overflow-y-scroll">
+              <div>
                 <CardHeader>
                   <CardTitle>{note.title}</CardTitle>
                 </CardHeader>

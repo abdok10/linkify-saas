@@ -13,10 +13,14 @@ export const getTodos = async () => {
 }
 
 export const createTodo = async (formData: FormData) => {
-  const todoField = formData.get('todo') as string
-  const timeField = formData.get('time') as string
+  const todoField = formData.get('todo') as string | null
+  const timeField = formData.get('time') as string | null
 
   console.log(todoField, timeField)
+
+  if (!todoField || !timeField) {
+    throw new Error('Todo or time field is missing.')
+  }
 
   try {
     const todo = await db.todo.create({
@@ -26,9 +30,9 @@ export const createTodo = async (formData: FormData) => {
       }
     })
 
-    revalidatePath('/notes')
+    revalidatePath('/todos')
     return todo
   } catch (error) {
-    return error
+    throw new Error('Todo or time field is missing.')
   }
 }
