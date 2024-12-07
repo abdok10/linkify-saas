@@ -89,5 +89,6 @@ export const getAllNotes = async () => {
     // where: { userId: "randomid" },
     orderBy: { createdAt: "desc" },
   });
+  console.log({ notes })
   return notes;
 };

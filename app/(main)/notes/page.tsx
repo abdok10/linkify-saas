@@ -23,7 +23,7 @@ const NotesPage = async () => {
           <p className="text-zinc-400">Here you can see and create new notes</p>
         </div>
         <Link href="/notes/new">
-          <Button className="">Create a new note</Button>
+          <Button>Create a new note</Button>
         </Link>
       </div>
 
