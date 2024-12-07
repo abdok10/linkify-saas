@@ -36,3 +36,30 @@ export const createTodo = async (formData: FormData) => {
     throw new Error('Todo or time field is missing.')
   }
 }
+
+export const deleteTodo = async (todoId: number) => {
+  console.log({ todoId })
+  const todo = await db.todo.delete({
+    where: {
+      id: todoId
+    }
+  })
+  console.log({ todo })
+
+  revalidatePath('/todos')
+  return todo
+}
+
+export const checkTodo = async (todoId: number, checked: boolean) => {
+  const todo = await db.todo.update({
+    where: {
+      id: todoId
+    },
+    data: {
+      isCompleted: checked
+    }
+  })
+  console.log({ todo })
+  revalidatePath('/todos')
+  return todo
+}

@@ -81,7 +81,12 @@ const TodosPage = async () => {
             />
           </div>
           <div className='max-w-20'>
-            <Input type='number' name='time' required/>
+            <Input
+              type='number'
+              name='time'
+              className='border-lime-600'
+              required
+            />
           </div>
           <button type='submit' className='hidden' />
         </form>
