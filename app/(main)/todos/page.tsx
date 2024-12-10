@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input'
 import { TodoTypes } from '@/types'
 import { ArrowDownUp, Dot, Plus } from 'lucide-react'
 
+export type FormAction = (formData: FormData) => Promise<void | unknown>
+
 const TodosPage = async () => {
   const todos: TodoTypes[] = await getTodos()
 

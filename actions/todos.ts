@@ -2,6 +2,7 @@
 
 import db from '@/lib/prisma/db'
 import { revalidatePath } from 'next/cache'
+export type FormAction = (formData: FormData) => Promise<void | unknown>
 
 export const getTodos = async () => {
   const todos = await db.todo.findMany({
@@ -23,7 +24,7 @@ export const createTodo = async (formData: FormData) => {
   }
 
   try {
-    const todo = await db.todo.create({
+    await db.todo.create({
       data: {
         todo: todoField,
         time: +timeField
@@ -31,7 +32,7 @@ export const createTodo = async (formData: FormData) => {
     })
 
     revalidatePath('/todos')
-    return todo
+    return
   } catch (error) {
     throw new Error('Todo or time field is missing.')
   }
